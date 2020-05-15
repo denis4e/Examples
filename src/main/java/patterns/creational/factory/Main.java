@@ -63,10 +63,10 @@ class BackEndDev implements DevMember {
 }
 
 
-class WebProjectFactory implements TeamFactory {
+class WebProjectTeamFactory implements TeamFactory {
     @Override
     public QaMember createQaMember() {
-        return new AutomationQa();
+        return new ManualQa();
     }
 
     @Override
@@ -76,10 +76,10 @@ class WebProjectFactory implements TeamFactory {
 }
 
 
-class APIProjectFactory implements TeamFactory {
+class APIProjectTeamFactory implements TeamFactory {
     @Override
     public QaMember createQaMember() {
-        return new ManualQa();
+        return new AutomationQa();
     }
 
     @Override
@@ -92,10 +92,10 @@ class APIProjectFactory implements TeamFactory {
 class FactoryMaker {
     public TeamFactory createFactory(String factoryType) {
         if (factoryType.equalsIgnoreCase("API")) {
-            return new APIProjectFactory();
+            return new APIProjectTeamFactory();
 
         } else if (factoryType.equalsIgnoreCase("WEB")) {
-            return new WebProjectFactory();
+            return new WebProjectTeamFactory();
 
         }
         return null;
