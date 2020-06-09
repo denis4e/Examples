@@ -1,8 +1,8 @@
-import ex3.User
-import ex3.UserAddress
+package ex3
+
 
 fun main() {
-    var user: User? = User(UserAddress("Kharkiv"))
+    var user: KotlinUser? = KotlinUser(KotlinUserAddress("Kharkiv"))
     println(user?.userAddress?.city)
     user = null
     println(user?.userAddress?.city)
