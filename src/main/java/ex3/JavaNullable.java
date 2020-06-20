@@ -16,3 +16,4 @@ public class JavaNullable {
         System.out.println(city);
     }
 }
+
