@@ -1,12 +1,7 @@
 package ex4
 
 class GroovyCollections {
-
-    public static void main(String[] args) {
-        collections()
-    }
-
-    def static collections() {
+    def collections() {
         //Map
         def map = [age: 30, name: 'Tom', married: true]
         List list = ["Mary", "Becky", "Susan", "Tom", "Mary"]
