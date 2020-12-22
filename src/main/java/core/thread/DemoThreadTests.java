@@ -8,7 +8,7 @@ public class DemoThreadTests {
         thread.start();
 
         DemoThread demoThread = new DemoThread();
-        demoThread.run();
+        demoThread.start();
 
         new Thread(() -> System.out.println("core.thread with lambda")).start();
     }

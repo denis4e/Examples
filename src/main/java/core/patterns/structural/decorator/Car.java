@@ -1,4 +1,4 @@
-package core.patterns.behavioral.decorator;
+package core.patterns.structural.decorator;
 
 public interface Car {
 

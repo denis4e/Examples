@@ -1,56 +1,74 @@
 package core.patterns.creational.factoryMethod;
 
-interface ImageReader {
-    DecodedImage getDecodeImage();
+interface Shape {
+    void draw();
 }
 
-class DecodedImage {
-    private String image;
-
-    public DecodedImage(String image) {
-        this.image = image;
-    }
+class Rectangle implements Shape {
 
     @Override
-    public String toString() {
-        return image + ": is decoded";
+    public void draw() {
+        System.out.println("Inside Rectangle::draw() method.");
     }
 }
 
-class GifReader implements ImageReader {
-    private DecodedImage decodedImage;
-
-    public GifReader(String image) {
-        this.decodedImage = new DecodedImage(image);
-    }
+class Square implements Shape {
 
     @Override
-    public DecodedImage getDecodeImage() {
-        return decodedImage;
+    public void draw() {
+        System.out.println("Inside Square::draw() method.");
     }
 }
 
-class JpegReader implements ImageReader {
-    private DecodedImage decodedImage;
-
-    public JpegReader(String image) {
-        decodedImage = new DecodedImage(image);
-    }
+class Circle implements Shape {
 
     @Override
-    public DecodedImage getDecodeImage() {
-        return decodedImage;
+    public void draw() {
+        System.out.println("Inside Circle::draw() method.");
     }
 }
 
-public class FactoryMethodDemo {
+class ShapeFactory {
+
+    //use getShape method to get object of type shape
+    public Shape getShape(String shapeType) {
+        if (shapeType == null) {
+            return null;
+        }
+        switch (shapeType) {
+            case "CIRCLE":
+                return new Circle();
+            case "RECTANGLE":
+                return new Rectangle();
+            case "SQUARE":
+                return new Square();
+            default:
+                return null;
+        }
+    }
+}
+
+class FactoryPatternDemo {
+
     public static void main(String[] args) {
-        ImageReader readerGif = new GifReader("image.gif");
-        ImageReader readerJpeg = new JpegReader("image.jpg");
+        ShapeFactory shapeFactory = new ShapeFactory();
 
-        DecodedImage decodedImageGif = readerGif.getDecodeImage();
-        DecodedImage decodedImageJpeg = readerJpeg.getDecodeImage();
-        System.out.println(decodedImageGif);
-        System.out.println(decodedImageJpeg);
+        //get an object of Circle and call its draw method.
+        Shape shape1 = shapeFactory.getShape("CIRCLE");
+
+        //call draw method of Circle
+        shape1.draw();
+
+        //get an object of Rectangle and call its draw method.
+        Shape shape2 = shapeFactory.getShape("RECTANGLE");
+
+        //call draw method of Rectangle
+        shape2.draw();
+
+        //get an object of Square and call its draw method.
+        Shape shape3 = shapeFactory.getShape("SQUARE");
+
+        //call draw method of square
+        shape3.draw();
     }
 }

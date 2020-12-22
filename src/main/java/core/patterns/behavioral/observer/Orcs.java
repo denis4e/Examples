@@ -1,5 +1,7 @@
 package core.patterns.behavioral.observer;
 
+import java.util.List;
+
 public class Orcs implements WeatherObserver {
 
     @Override
@@ -21,4 +23,6 @@ public class Orcs implements WeatherObserver {
                 break;
         }
     }
+
+
 }
