@@ -2,18 +2,21 @@ package core.patterns.creational.builder;
 
 public class Main {
     public static void main(String[] args) {
-    Car car = new Car.Builder("KIA").setAge(12).setColor("Red").build();
-        System.out.println(car.getAge());
-        System.out.println(car.getName());
-        System.out.println(car.getColor());
+        Car car = Car.builder().setName("KIA").setAge(3).setColor("Red").build();
+        Tree tree = Tree.builder().setName("KIA").setAge(3).build();
+        System.out.println(car.getAge() + car.getName() + car.getColor());
+        System.out.println(tree.getAge() + tree.getName());
     }
-
 
     static class Car {
 
         private String name;
         private String color;
         private Integer age;
+
+        public static Builder builder() {
+            return new Builder();
+        }
 
         public String getName() {
             return name;
@@ -38,10 +41,6 @@ public class Main {
             private String color;
             private Integer age;
 
-            Builder(String name) {
-                this.name = name;
-            }
-
             public Builder setColor(String color) {
                 this.color = color;
                 return this;
@@ -52,7 +51,12 @@ public class Main {
                 return this;
             }
 
-            Car build(){
+            public Builder setName(String name) {
+                this.name = name;
+                return this;
+            }
+
+            Car build() {
                 return new Car(this);
             }
         }
